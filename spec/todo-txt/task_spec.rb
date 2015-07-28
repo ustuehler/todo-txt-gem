@@ -146,9 +146,9 @@ describe Todo::Task do
       task.contexts.should == ["@test", "@test2"]
     end
 
-    it 'should recognise contexts with dashes and underscores' do
-      task = Todo::Task.new "Hello, world! @test-me @test2_me"
-      task.contexts.should == ["@test-me", "@test2_me"]
+    it 'should recognise contexts with special characters' do
+      task = Todo::Task.new "Hello, world! @test-me @test2_me @test/me"
+      task.contexts.should == ["@test-me", "@test2_me", "@test/me"]
     end
   end
   
@@ -163,9 +163,9 @@ describe Todo::Task do
       task.projects.should == ["+test", "+test2"]
     end
 
-    it 'should recognise projects with dashes and underscores' do
-      task = Todo::Task.new "Hello, world! +test-me +test2_me"
-      task.projects.should == ["+test-me", "+test2_me"]
+    it 'should recognise projects with special characters' do
+      task = Todo::Task.new "Hello, world! +test-me +test2_me +test/me"
+      task.projects.should == ["+test-me", "+test2_me", "+test/me"]
     end
   end
   
